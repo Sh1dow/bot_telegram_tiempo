@@ -49,20 +49,25 @@ def echo(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text = update.message.text) #me gustaria saber que hace esa ultima asignacion al texto
 
 def paraguas(update,context):
-	response = requests.get(url)
-	data = json.loads(response.text)
+    response = requests.get(url)
+    data = json.loads(response.text)
 
-	current = data["current"]
-	weather = current["weather"][0]["main"]
+    current = data["current"]
+    weather = current["weather"][0]["main"]
 
 	
 
-	if weather == "Rain":
-		 context.bot.send_message(chat_id=update.effective_chat.id, text = "LLEVATE UN PARAGUITAS MI NIÑO")
-	else:
-		context.bot.send_message(chat_id=update.effective_chat.id, text = "TODO ESTA BIEN, TE PUEDES IR A LA PLAYITA ;D")
+    if weather == "Rain":
+	    sendMessage("Cogete un paraguas mi niño")
+    else:
+            sendMessage("A la playa")
 
-	 
+#añadimos una funcion para el envio de mensajes 
+
+def sendMessage(msj):
+    context.bot.send_message(chat_id=update.effective_chat.id, text = mensaje)
+
+
 #handler del start
 start_handler = CommandHandler('start' , start)
 dispatcher.add_handler(start_handler)
