@@ -12,7 +12,7 @@ class weather:
 
         self.response = requests.get(url)
 
-    def rain(self, url): 
+    def rain(self): 
 
         self.data = json.loads(self.response.text)
         self.current = self.data["current"]["weather"][0]["main"]

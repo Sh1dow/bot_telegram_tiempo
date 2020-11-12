@@ -5,6 +5,8 @@ import requests
 from WeatherCls import weather
 import logging
 
+WeatherCls = weather()
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from telegram import Update 
 
@@ -18,13 +20,13 @@ logging.basicConfig(format='%(asctime)s -%(name)s - &(levelname)s - %(message)s'
 print("funcionando")
 
 def paraguas (update, context):
-    weather = WeatherCls.weather.rain()
+    weather = WeatherCls.rain()
      
     
 
-    print(weather.rain())
+    print(weather)
     
-    #context.bot.send_message(chat_id = update.effective_chat.id, text = weather)
+    context.bot.send_message(chat_id = update.effective_chat.id, text = weather)
 
     context.bot.send_message(chat_id = update.effective_chat.id, text = "todo bien")
 #handler 
