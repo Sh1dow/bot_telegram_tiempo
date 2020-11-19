@@ -17,6 +17,8 @@ import requests
 import json
 import logging
 
+import wather_class
+
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
@@ -49,13 +51,7 @@ def echo(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text = update.message.text) #me gustaria saber que hace esa ultima asignacion al texto
 
 def paraguas(update,context):
-    #response = requests.get(url)
-    #data = json.loads(response.text)
-
-    #current = data["current"]
-    #weather = current["weather"][0]["main"]
-
-    weather = tiempo()	
+    weather = wather_class.weather.tiempo()	
 
     if weather == "Rain":
 	    sendMessage("Cogete un paraguas mi niño")
@@ -66,14 +62,14 @@ def paraguas(update,context):
 
 #funcion del estado del tiempo por funcion
 
-def tiempo():
-    response = requests.get(url)
-    data     = json.loads(response.text)
-
-    current  = data["current"]["weather"][0]["main"]
-    return current
-
 #añadimos una funcion para el envio de mensajes 
+#def tiempo():
+    #response = requests.get(url)
+    #data     = json.loads(response.text)
+
+    #current  = data["current"]["weather"][0]["main"]
+    #return current
+
 
 #def sendMessage(msj):
 
