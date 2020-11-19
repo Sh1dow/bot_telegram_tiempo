@@ -2,9 +2,9 @@
 #-*- coding utf-8 -*-
 
 import requests
-from WeatherCls import weather
 import logging
 
+from WeatherCls import weather
 WeatherCls = weather()
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
